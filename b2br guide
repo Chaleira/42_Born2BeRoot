@@ -1,0 +1,133 @@
+sudo reboot							-> Reboot
+sudo nano /etc/hostname					-> Change hostname (need to reboot after)
+sudo useradd <user>						-> Creates a user
+sudo usermod: -l (username), -c (fullname), -g (group id)	-> Changes the user parameters
+sudo usermod -aG sudo <username>				-> Add user to sudo group
+sudo whoami							-> See the group and privileges
+sudo visudo							-> Used to change the passwords parameters
+sudo userdel -r <user>						-> Delete user and files
+id -u								-> Display user id
+users								-> Show list of current logged users
+cat /etc/passwd | cut -d ":" -f 1				-> List of all users on the machine
+sudo groupadd							-> Creates a new group
+sudo gpasswd -a						-> Add user to a group
+sudo gpasswd -d						-> Deletes user from a group
+sudo groupdel							-> Deletes a group
+groups								-> Displays the groups of a user
+id -g								-> Shows a user main group id
+getent group							-> Displays a list of all users in a group
+sudo passwd <user>						-> Change Password
+
+
+#monitoring.sh
+
+uname								-> Architecture information
+	-s -> kernel name / -r -> kernel release / -v -> kernel version / -m -> machine hardware name /
+	-o -> operating system 
+/proc/cpuinfo							-> CPU info
+free								-> RAM information
+	-h -> Displays the memory information in short form
+df								-> Disk information
+top -bn1							-> Process information
+who								-> Boot and connect user information
+lsblk								-> Partition and lvm information
+/proc/net/sockstat						-> TCP information
+hostname							-> Hostname and IP information
+ip link show / ip address					-> IP information
+wc								-> Word Count
+	-l -> Print the new line counts
+awk								-> Read a file etc
+
+
+#sleep.sh
+
+bc								-> used to calculated complicated aritmetical
+								   expressions and the '<<<' command is to specifie
+								   the string to be calculated
+sleep								-> the scprit will be delayed the amount of 									   seconds of delay. The next script will only be 									   excuted when the previous has ended 
+
+
+#ufw
+
+firewall							-> Used to protect the connection ports
+sudo ufw allow							-> Allow a port 
+sudo ufw deny							-> Deny a port
+sudo ufw status						-> Firewall status
+
+
+#ssh
+
+ssh								-> Used to comunicate between to computers
+sudo systemctl status ssh					-> ssh status
+sudo nano /etc/ssh/sshd_config					-> change listening ports
+sudo systemctl restart ssh					-> Restart ssh
+ssh <username>@<localhost> -p 4242				-> Used to connect remotely to the machine
+
+
+#edited password rules
+
+sudo nano /etc/login.defs					-> change max_days, min_days, warn_age
+sudo apt install libpam-pwquality				-> Library for password quality verification
+sudo nano /etc/security/pwquality.conf				-> difok=7-> at least 7 different characters from 									   last pass, minlen=10, dcredit=-1-> min number of 									   digits in new pass, ucredit=-1-> Upercase,
+								   maxrepeat=3->same consecutive characters,
+								   usercheck=1->check if pass contains username,
+								   retry=3, enforce_for_root.
+								   
+								   
+#Guide
+
+Why Debian?
+
+	It's easier to install and configure than CentOS.
+
+What is a virtual Machine?
+
+	It's a virtual envoiremnt inside an Opereting system, it uses software instead of pyshical computer.
+	It allows u to use a different operating system from the one of your host.
+
+What's it's purpose?
+
+	You can use a virtual box to use a different operating system than the one u use on your host and you can
+	also use it to test software in a safe space without damaging your main envoirement
+	
+How does it work?
+
+	It works through virtualization. Virtualization software uses sofware to simulate virtual hardware that
+	allows the vms to run on a single host
+
+Diif between apt and aptitude?
+
+	Aptitude is a high-level package manager, while APT in a low level package manager that can be used by 
+	other high-level package manager 
+	
+What is appArmor?
+
+	AppArmor is a linux kernel security module that allows the system administrator to restric programs
+	capabilities with pre-program profiles
+	
+What is SSH?
+
+	Secure Shell or Secure Socket Shell is a network protocol that gives user a secure way to access a 		computer over an  unsecured network
+	
+Create a new user
+
+	sudo adduser <username>	-> Create user 
+	sudo chage -l <username>	-> verify password expire info for new user
+	sudo adduser <username> sudo 	-> add user to sudoers group
+	sudo adduser <username> user42	-> add user to user42 group
+	
+Change host name
+
+	sudo nano /etc/hostname	-> Change hostname (need to reboot after)
+	
+Sudo logs location
+
+	sudo cat /var/log/sudo/sudo.log
+	
+
+	
+
+
+	
+
+
